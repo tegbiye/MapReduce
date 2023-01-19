@@ -8,13 +8,21 @@ Description:
 
 The mapreduce modules:
 1. Coordinator programs
-   - coordinator.go: coordinates the process or we can say it is a master process
-   - coordinator_rpc.go: connects on the distributed mode
-   - coordinator_merge.go: merges the files
+   - coordinator functions which coordinates the process or we can say it is a master process
+   - coordinator_rpc functions which connects on the distributed mode
+   - coordinator_merge function to merges the files
+   - schedule function which schedules the map_Phase and reduse_Phase
+   -test_case to test the functions in the coordinator
+     (go test -run Sequential)
 2. Worker Programs
-   - worker.go: 
-   - map.go:   the doMap job 
-   - reduce.go:  the doReduce job
-   - rpc.go: connects on the distributed mode
-3. scheduler:
-   - scheduler.go: schedules the map_Phase and reduse_Phase
+   - worker functions to
+   - map function for the Map phase job 
+   - reduce function for the Reduce job
+   - rpc function which connects on the distributed mode
+3. Applying the mapreduce for wordcount program
+   implemented as wc.go
+   and can be run is three ways as explained in the main function
+   1. Single Master and Worker Sequentially: go run wc.go master sequential "..files\*.txt"
+   2. Distributed: go run wc.go masteraddress worker address "..\files\*.txt" 
+
+   - 
